@@ -1,0 +1,37 @@
+{% extends "timesheet/base.html" %}
+{% block title %}Timesheet List{% endblock title %}
+
+{% block body %}
+    <h2>Timesheet Details List View:</h2>
+
+<div class="row">
+    <table class="table">
+        <tr>
+            <th>User</th>
+            <th>Date</th>
+            <th>Work Code</th>
+            <th>Project</th>
+            <th>Hours</th>
+        </tr>
+        {% for timesheet in timesheetdetail_list %}
+        <tr>
+                {% ifchanged timesheet.user %}
+                    <td>{{ timesheet.user }}</td>
+                {% else %}
+                    <td></td>
+                {% endifchanged %}
+                <td>{{timesheet.workdate|date}}</td>
+                <td>{{timesheet.workcode}}</td>
+                <td>{{timesheet.project}}</td>
+                <td>{{timesheet.hours}}</td>
+        </tr>
+
+
+        {% empty %}
+            <td>No items found</td>
+        {% endfor %}
+    </table>
+                <div class="row">
+        </div>
+
+{% endblock body %}
